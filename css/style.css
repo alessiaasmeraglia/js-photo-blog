@@ -92,3 +92,24 @@ body {
     font-size: 1.8rem;
     line-height: 1.1;
 }
+
+/* responsive */
+@media screen and (max-width: 992px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .site-header h1 {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-header h1 {
+        font-size: 3rem;
+    }
+}
