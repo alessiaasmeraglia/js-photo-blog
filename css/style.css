@@ -16,7 +16,7 @@ body {
 }
 
 /* Stile per l'header */
-.siteheader {
+.site-header {
     background-image: url("../img/wall.png");
     background-size: cover;
     background-repeat: repeat;
@@ -24,7 +24,7 @@ body {
     padding: 2rem 1rem;
 }
 
-.siteheader h1 {
+.site-header h1 {
     font-family: "Edu TAS Beginner", sans-serif;
     font-size: 5rem;
     font-weight: 700;
