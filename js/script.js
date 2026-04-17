@@ -6,7 +6,7 @@ const photoListElement = document.getElementById("photo-list");
 // Funzione per creare una card
 function createCard(photo) {
     const card = document.createElement("div");
-    card.classList.add("card");
+    card.classList.add("photo-card");
 
     card.innerHTML = `
         <img class="photo-pin" src="/img/pin.svg" alt="puntina">
@@ -20,18 +20,24 @@ function createCard(photo) {
     return card;
 }
 
-// Esempio di chiamata fetch per recuperare i dati dall'API
+// Chiamata fetch per recuperare i dati dall'API
 fetch(ApiURL)
-    .then((response) => {
-        console.log("Risposta grezza:", response);
-        return response.json();
+    .then((response) => { // Gestisce la risposta della chiamata fetch
+        if (!response.ok) { // Controlla se la risposta è stata ricevuta correttamente
+            throw new Error("Network response was not ok");
+        }
+        return response.json(); // Converte la risposta in formato JSON
     })
-    .then((data) => {
-        console.log("Dati convertiti in JSON:", data);
+    .then((photos) => { // Gestisce i dati recuperati
+        photoListElement.innerHTML = ""; // Pulisce il contenuto precedente
+        photos.forEach((photo) => { // Itera su ogni foto e crea una card
+            const cardElement = createCard(photo); // Crea una card per ogni foto
+            photoListElement.appendChild(cardElement); // Aggiunge la card all'elemento HTML selezionato
+        });
     })
-    .catch((error) => {
+    .catch((error) => { // Gestisce eventuali errori durante la chiamata fetch
         console.error("Errore:", error);
     })
-    .finally(() => {
+    .finally(() => { // Esegue un'azione finale indipendentemente dal successo o fallimento della chiamata fetch
         console.log("Chiamata terminata");
     });
