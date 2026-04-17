@@ -1,0 +1,94 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Stile generale */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    min-height: 100vh;
+}
+
+/* Stile per l'header */
+.siteheader {
+    background-image: url("../img/wall.png");
+    background-size: cover;
+    background-repeat: repeat;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.siteheader h1 {
+    font-family: "Edu TAS Beginner", sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+/* Stile per il main */
+.site-main {
+    background-image: url("../img/cork.png");
+    background-size: cover;
+    background-repeat: repeat;
+    padding: 3rem 1rem 4rem;
+    min-height: calc(100vh - 150px);
+}
+
+/* Stile per il contenitore */
+.site-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Stile per griglia foto */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Stile per le foto */
+.photo-card {
+    position: relative;
+    background-color: white;
+    padding: 1rem 1rem 1.25rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.photo-pin {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+}
+
+.photo-image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.photo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-date {
+    font-family: "Sometype Mono", monospace;
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.4rem;
+}
+
+.photo-title {
+    font-family: "Edu TAS Beginner", sans-serif;
+    font-size: 1.8rem;
+    line-height: 1.1;
+}
