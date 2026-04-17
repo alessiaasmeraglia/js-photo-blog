@@ -1,11 +1,29 @@
+//@ts-check
+'use strict';
+
+/**
+ * @typedef {Object} Photo
+ * @property {string} url
+ * @property {string} title
+ * @property {string} date
+ */
+
 // URL dell'API da cui recuperare i dati
 const apiUrl = "https://lanciweb.github.io/demo/api/pictures/";
-// Selezione dell'elemento HTML in cui inserire i dati recuperati
-const photoListElement = document.getElementById("photo-list");
-// Mostra messaggio iniziale di caricamento
-photoListElement.innerHTML = `<p class="loading-message">Caricamento...</p>`;
 
-// Funzione per creare una card
+/** @type {HTMLElement | null} */
+const photoListElement = document.getElementById("photo-list");
+
+// Mostra messaggio iniziale di caricamento
+if (photoListElement !== null) {
+    photoListElement.innerHTML = `<p class="loading-message">Caricamento...</p>`;
+}
+
+/**
+ * Funzione per creare una card
+ * @param {Photo} photo
+ * @returns {HTMLDivElement}
+ */
 function createCard(photo) {
     const card = document.createElement("div");
     card.classList.add("photo-card");
@@ -30,16 +48,28 @@ fetch(apiUrl)
         }
         return response.json(); // Converte la risposta in formato JSON
     })
-    .then((photos) => { // Gestisce i dati recuperati
+    .then(
+        /** @param {Photo[]} photos */
+        (photos) => { // Gestisce i dati recuperati
+        if (photoListElement === null) {
+            return;
+        }
+        
         photoListElement.innerHTML = ""; // Pulisce il contenuto precedente
+        
         photos.forEach((photo) => { // Itera su ogni foto e crea una card
             const cardElement = createCard(photo); // Crea una card per ogni foto
             photoListElement.appendChild(cardElement); // Aggiunge la card all'elemento HTML selezionato
+            
         });
     })
     .catch((error) => { // Gestisce eventuali errori durante la chiamata fetch
         console.log("Errore:", error);
-        photoListElement.innerHTML = `<p class="error-message">Errore nel caricamento delle foto.</p>`;
+        
+        if (photoListElement !== null) {
+        
+            photoListElement.innerHTML = `<p class="error-message">Errore nel caricamento delle foto.</p>`;
+        }
     })
     .finally(() => { // Esegue un'azione finale indipendentemente dal successo o fallimento della chiamata fetch
         console.log("Chiamata terminata");
