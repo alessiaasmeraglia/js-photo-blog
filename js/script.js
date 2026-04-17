@@ -1,7 +1,9 @@
-const loadButton = document.getElementById('loadButton');
-
+// URL dell'API da cui recuperare i dati
 const ApiURL = "https://lanciweb.github.io/demo/api/pictures/";
+// Selezione dell'elemento HTML in cui inserire i dati recuperati
+const photoListElement = document.getElementById("photo-list");
 
+// Esempio di chiamata fetch per recuperare i dati dall'API
 fetch(ApiURL)
     .then((response) => {
         console.log("Risposta grezza:", response);
