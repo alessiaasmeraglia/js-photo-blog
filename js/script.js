@@ -1,7 +1,9 @@
 // URL dell'API da cui recuperare i dati
-const ApiURL = "https://lanciweb.github.io/demo/api/pictures/";
+const apiUrl = "https://lanciweb.github.io/demo/api/pictures/";
 // Selezione dell'elemento HTML in cui inserire i dati recuperati
 const photoListElement = document.getElementById("photo-list");
+// Mostra messaggio iniziale di caricamento
+photoListElement.innerHTML = `<p class="loading-message">Caricamento...</p>`;
 
 // Funzione per creare una card
 function createCard(photo) {
@@ -9,7 +11,7 @@ function createCard(photo) {
     card.classList.add("photo-card");
 
     card.innerHTML = `
-        <img class="photo-pin" src="/img/pin.svg" alt="puntina">
+        <img class="photo-pin" src="./img/pin.svg" alt="puntina">
         <div class="photo-image">
             <img src="${photo.url}" alt="${photo.title}">
         </div>
@@ -21,7 +23,7 @@ function createCard(photo) {
 }
 
 // Chiamata fetch per recuperare i dati dall'API
-fetch(ApiURL)
+fetch(apiUrl)
     .then((response) => { // Gestisce la risposta della chiamata fetch
         if (!response.ok) { // Controlla se la risposta è stata ricevuta correttamente
             throw new Error("Network response was not ok");
@@ -36,7 +38,8 @@ fetch(ApiURL)
         });
     })
     .catch((error) => { // Gestisce eventuali errori durante la chiamata fetch
-        console.error("Errore:", error);
+        console.log("Errore:", error);
+        photoListElement.innerHTML = `<p class="error-message">Errore nel caricamento delle foto.</p>`;
     })
     .finally(() => { // Esegue un'azione finale indipendentemente dal successo o fallimento della chiamata fetch
         console.log("Chiamata terminata");
