@@ -50,6 +50,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    margin: 2rem 8rem;
 }
 
 /* Stile per le foto */
@@ -103,6 +104,10 @@ body {
     .site-header h1 {
         font-size: 4rem;
     }
+
+    .photo-title {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -111,6 +116,6 @@ body {
     }
 
     .site-header h1 {
-        font-size: 3rem;
+        font-size: 6rem;
     }
 }
