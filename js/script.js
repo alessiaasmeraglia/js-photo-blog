@@ -30,9 +30,14 @@ function createCard(photo) {
 
     card.innerHTML = `
         <img class="photo-pin" src="./img/pin.svg" alt="puntina">
+
         <div class="photo-image">
             <img src="${photo.url}" alt="${photo.title}">
+            <div class="photo-overlay">
+                
+            </div>
         </div>
+
         <div class="photo-date">${photo.date}</div>
         <h2 class="photo-title">${photo.title}</h2>
     `;

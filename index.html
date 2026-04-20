@@ -7,38 +7,81 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;700&family=Sometype+Mono:wght@400&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;700&family=Sometype+Mono:wght@400&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="./css/style.css">
 </head>
-    <body>
-        <header class = "site-header">
-            <h1>ESTATE '24</h1>
-        </header>
+<body>
 
-        <main class="site-main">
+    <header class="site-header">
+        <h1>ESTATE '24</h1>
+    </header>
+
+    <main class="site-main">
+        <div class="site-container">
+
             <div id="photo-list" class="photo-grid">
-                <!-- <div class="photo-grid">
-                    
-                    <div class="photo-card">
-                        <img class="photo-pin" src="./img/pin.svg" alt="puntina">
-                        <div class="photo-image">
-                            <img src="" alt="foto 1">
-                        </div>
-                    <div class="photo-date">12-07-2024</div>
-                    <h2 class="photo-title">bla bla la</h2>
-                    </div> -->
-                
-                </div>
+                <!-- Le card vengono generate via JS -->
             </div>
-            <input type="file" id="photo-upload">
-        </main>
-        
-        <footer>
-            <p>&copy; 2024 Photo Blog. Tutti i diritti riservati.</p>
-        </footer>
-        
-        <script src="./js/script.js"></script>
 
-    </body>
+            <section class="upload-section">
+                <form id="photo-form" class="upload-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="photo-title">Titolo</label>
+                            <input
+                                type="text"
+                                id="photo-title"
+                                name="title"
+                                placeholder="Inserisci il titolo"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo-date">Data</label>
+                            <input
+                                type="date"
+                                id="photo-date"
+                                name="date"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo-file">Immagine</label>
+                            <input
+                                type="file"
+                                id="photo-file"
+                                name="file"
+                                accept="image/*"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <button type="submit" class="upload-button">Aggiungi foto</button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modale fullscreen -->
+    <div id="photo-modal" class="photo-modal hidden">
+        <button id="modal-close" class="modal-close" aria-label="Chiudi modale">&times;</button>
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Foto ingrandita">
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Photo Blog. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script src="./js/script.js"></script>
+</body>
 </html>
