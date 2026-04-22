@@ -49,6 +49,7 @@ body {
     grid-template-columns: repeat(3, minmax(220px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
+    padding: 0 8rem;
 }
 
 /* Messaggi */
@@ -338,16 +339,13 @@ body {
     }
 
     .site-header h1 {
-        font-size: 3.2rem;
+        font-size: 6rem;
     }
 
     .upload-section {
         padding: 1rem;
     }
 
-    .form-row {
-        flex-direction: column;
-    }
 
     .upload-button {
         width: 100%;
@@ -362,11 +360,21 @@ body {
         width: 100%;
         max-width: 260px;
         height: 220px;
+
     }
 
     .modal-close {
         top: 10px;
         right: 15px;
         font-size: 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .site-header h1 {
+        font-size: 5rem;
+    }
+    .photo-grid {
+        padding: 0 4rem;
     }
 }
